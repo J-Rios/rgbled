@@ -1,0 +1,23 @@
+###########################################
+# Arduino Syntax Coloring Map
+###########################################
+
+###########################################
+# Datatypes (KEYWORD1)
+###########################################
+
+RGBLED	KEYWORD1
+
+###########################################
+# Methods and Functions (KEYWORD2)
+###########################################
+
+setup	KEYWORD2
+off	KEYWORD2
+red	KEYWORD2
+green	KEYWORD2
+blue	KEYWORD2
+yellow	KEYWORD2
+cyan	KEYWORD2
+magenta	KEYWORD2
+white	KEYWORD2
