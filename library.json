@@ -1,5 +1,5 @@
 {
-	"name": "rgbleds",
+	"name": "rgbled",
 	"keywords": "hal, arduino, espidf, avr, sam, microchip, stm, esp8266, esp32",
 	"description": "A C++ library to ease RGB LED usage with HAL emphasis to be used in different kind of devices and frameworks.",
 	"authors": {
@@ -8,9 +8,9 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/J-Rios/rgbleds"
+		"url": "https://github.com/J-Rios/rgbled"
 	},
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"frameworks": "*",
 	"platforms": "*"
 }
