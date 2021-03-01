@@ -2,8 +2,8 @@
 /**
  * @file    rgbled.cpp
  * @author  Jose Miguel Rios Rubio <jrios.github@gmail.com>
- * @date    21-01-2021
- * @version 1.0.1
+ * @date    01-03-2021
+ * @version 1.1.0
  *
  * @section DESCRIPTION
  *
