@@ -40,8 +40,8 @@
     #include <Arduino.h>
 #elif defined(PICO_BOARD)
     #include "hardware/gpio.h"
-#elif defined(ESP_IDF)
-    // Unimplemented
+#elif defined(ESP_PLATFORM)
+    #include <driver/gpio.h>
 #elif defined(SAM_ASF)
     // Unimplemented
 #elif defined(__AVR__)
@@ -193,8 +193,9 @@ void RGBLED::hal_gpio_as_digital_output(const uint32_t gpio)
     #elif defined(PICO_BOARD)
         gpio_init(gpio);
         gpio_set_dir(gpio, GPIO_OUT);
-    #elif defined(ESP_IDF)
-        // Unimplemented
+    #elif defined(ESP_PLATFORM)
+        gpio_pad_select_gpio((gpio_num_t)gpio);
+        gpio_set_direction((gpio_num_t)gpio, GPIO_MODE_OUTPUT);
     #elif defined(SAM_ASF)
         // Unimplemented
     #elif defined(__AVR__)
@@ -219,8 +220,8 @@ void RGBLED::hal_gpio_low(const uint32_t gpio)
         digitalWrite(gpio, LOW);
     #elif defined(PICO_BOARD)
         gpio_put(gpio, 0);
-    #elif defined(ESP_IDF)
-        // Unimplemented
+    #elif defined(ESP_PLATFORM)
+        gpio_set_level((gpio_num_t)gpio, 0);
     #elif defined(SAM_ASF)
         // Unimplemented
     #elif defined(__AVR__)
@@ -242,8 +243,8 @@ void RGBLED::hal_gpio_high(const uint32_t gpio)
         digitalWrite(gpio, HIGH);
     #elif defined(PICO_BOARD)
         gpio_put(gpio, 1);
-    #elif defined(ESP_IDF)
-        // Unimplemented
+    #elif defined(ESP_PLATFORM)
+        gpio_set_level((gpio_num_t)gpio, 1);
     #elif defined(SAM_ASF)
         // Unimplemented
     #elif defined(__AVR__)
