@@ -38,12 +38,16 @@
 // Device/Framework Libraries
 #if defined(ARDUINO)
     #include <Arduino.h>
+#elif defined(PICO_BOARD)
+    #include "hardware/gpio.h"
 #elif defined(ESP_IDF)
     // Unimplemented
 #elif defined(SAM_ASF)
     // Unimplemented
 #elif defined(__AVR__)
     // Unimplemented
+#else
+    #warning "Unsupported device"
 #endif
 
 /*****************************************************************************/
@@ -186,6 +190,9 @@ void RGBLED::hal_gpio_as_digital_output(const uint32_t gpio)
 {
     #if defined(ARDUINO)
         pinMode(gpio, OUTPUT);
+    #elif defined(PICO_BOARD)
+        gpio_init(gpio);
+        gpio_set_dir(gpio, GPIO_OUT);
     #elif defined(ESP_IDF)
         // Unimplemented
     #elif defined(SAM_ASF)
@@ -210,6 +217,8 @@ void RGBLED::hal_gpio_low(const uint32_t gpio)
     // Set LED GPIOs logic levels for this color
     #if defined(ARDUINO)
         digitalWrite(gpio, LOW);
+    #elif defined(PICO_BOARD)
+        gpio_put(gpio, 0);
     #elif defined(ESP_IDF)
         // Unimplemented
     #elif defined(SAM_ASF)
@@ -231,6 +240,8 @@ void RGBLED::hal_gpio_high(const uint32_t gpio)
 
     #if defined(ARDUINO)
         digitalWrite(gpio, HIGH);
+    #elif defined(PICO_BOARD)
+        gpio_put(gpio, 1);
     #elif defined(ESP_IDF)
         // Unimplemented
     #elif defined(SAM_ASF)
